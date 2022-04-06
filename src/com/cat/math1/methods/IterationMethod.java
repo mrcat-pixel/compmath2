@@ -13,7 +13,7 @@ public class IterationMethod {
         double diffY = Math.abs(newY - y);
 
         if ((diffX < precision && diffY < precision) || iterationCount > 50)
-            return new AnswerPair(newX, newY);
+            return new AnswerPair(newX, newY, iterationCount);
 
         return calculate(system, precision, newX, newY, iterationCount + 1);
 

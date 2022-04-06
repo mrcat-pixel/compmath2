@@ -3,6 +3,7 @@ package com.cat.math1.services;
 import com.cat.math1.methods.IterationMethod;
 import com.cat.math1.methods.SecantMethod;
 import com.cat.math1.methods.TangentMethod;
+import com.cat.math1.objects.AnswerSingle;
 import com.cat.math1.objects.EqSystem;
 import com.cat.math1.objects.Func;
 import org.jetbrains.annotations.NotNull;
@@ -122,16 +123,16 @@ public class Process {
 
         printLine();
         System.out.println("Starting Newton's method...");
-        double newtSolution = new TangentMethod().calculate(function, precision, initApprox, 1);
-        System.out.println("The solution is: " + DoubleFormatter.format(newtSolution));
+        AnswerSingle newtSolution = new TangentMethod().calculate(function, precision, initApprox, 1);
+        System.out.println("The solution is: " + newtSolution.toString());
         printLine();
         System.out.println("Starting the Secant method...");
-        double secSolution = new SecantMethod().calculate(function, precision, begin, end, 1);
-        System.out.println("The solution is: " + DoubleFormatter.format(secSolution));
+        AnswerSingle secSolution = new SecantMethod().calculate(function, precision, begin, end, 1);
+        System.out.println("The solution is: " + secSolution.toString());
         printLine();
 
         System.out.println("The difference between the two solutions is: " +
-                DoubleFormatter.format(Math.abs(newtSolution - secSolution)));
+                DoubleFormatter.format(Math.abs(newtSolution.x - secSolution.x)));
     }
 
     private void multiple() {
